@@ -624,7 +624,9 @@
 				</exclusion>
 			</exclusions>
 		</dependency> -->
-		
+		<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+
+
 	</dependencies>
 
 	<build>
