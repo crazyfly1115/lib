@@ -98,5 +98,11 @@
     <function-signature>java.util.List getLinkList(java.lang.String, java.lang.String, int, java.lang.String)</function-signature>
     <example>${fnc:getLinkList(siteId, categoryId, number, param)}</example>  
   </function>
-  
+  <function>
+    <description>获取推荐图书列表</description>
+    <name>getCmsBookList</name>
+    <function-class>com.thinkgem.jeesite.modules.cms.utils.CmsUtils</function-class>
+    <function-signature>java.util.List getCmsBookList(int, java.lang.String)</function-signature>
+    <example>${fnc:getCmsBookList(number, param)}</example>
+  </function>
 </taglib>

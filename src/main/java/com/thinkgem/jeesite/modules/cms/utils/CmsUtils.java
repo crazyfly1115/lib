@@ -15,14 +15,8 @@ import com.thinkgem.jeesite.common.mapper.JsonMapper;
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.utils.CacheUtils;
 import com.thinkgem.jeesite.common.utils.SpringContextHolder;
-import com.thinkgem.jeesite.modules.cms.entity.Article;
-import com.thinkgem.jeesite.modules.cms.entity.Category;
-import com.thinkgem.jeesite.modules.cms.entity.Link;
-import com.thinkgem.jeesite.modules.cms.entity.Site;
-import com.thinkgem.jeesite.modules.cms.service.ArticleService;
-import com.thinkgem.jeesite.modules.cms.service.CategoryService;
-import com.thinkgem.jeesite.modules.cms.service.LinkService;
-import com.thinkgem.jeesite.modules.cms.service.SiteService;
+import com.thinkgem.jeesite.modules.cms.entity.*;
+import com.thinkgem.jeesite.modules.cms.service.*;
 
 import javax.servlet.ServletContext;
 
@@ -40,6 +34,7 @@ public class CmsUtils {
 	private static ArticleService articleService = SpringContextHolder.getBean(ArticleService.class);
 	private static LinkService linkService = SpringContextHolder.getBean(LinkService.class);
     private static ServletContext context = SpringContextHolder.getBean(ServletContext.class);
+    private  static CmsBookService cmsBookService=SpringContextHolder.getBean(CmsBookService.class);
 
 	private static final String CMS_CACHE = "cmsCache";
 	
@@ -310,4 +305,12 @@ public class CmsUtils {
         	addViewConfigAttribute(model, ca.getViewConfig());
         }
     }
+    //获取推荐图书列表
+    public  static  List<CmsBook> getCmsBookList(int num,String param){
+		Page<CmsBook> page = new Page<CmsBook>(1, num, -1);
+		CmsBook cmsBook=new CmsBook();
+		cmsBook.setDelFlag(Article.DEL_FLAG_NORMAL);
+		page = cmsBookService.findPage(page, cmsBook);
+		return page.getList();
+	}
 }

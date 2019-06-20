@@ -29,7 +29,7 @@ public class CmsBook extends DataEntity<CmsBook> {
 	private String description;		// 描述、摘要
 	private String weight;		// 权重，越大越靠前
 	private Date weightDate;		// 权重期限
-	private String hits;		// 点击数
+	private Integer hits;		// 点击数
 	private String customContentView;		// 自定义内容视图
 	private String viewConfig;		// 视图配置
 	
@@ -149,12 +149,11 @@ public class CmsBook extends DataEntity<CmsBook> {
 		this.weightDate = weightDate;
 	}
 	
-	@Length(min=0, max=11, message="点击数长度必须介于 0 和 11 之间")
-	public String getHits() {
+	public Integer getHits() {
 		return hits;
 	}
 
-	public void setHits(String hits) {
+	public void setHits(Integer hits) {
 		this.hits = hits;
 	}
 	

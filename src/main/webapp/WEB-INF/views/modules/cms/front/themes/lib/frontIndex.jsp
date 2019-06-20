@@ -163,6 +163,7 @@
     </div>
     <div class="row books">
         <p class="title"><span>新书推荐</span></p>
+        <c:forEach items="${fnc:getCmsBookList(5, '')}" var="bean"  varStatus="status">
         <div class="col-xs-3 col-sm-6">
             <a href="javascript:void(0)" target="_blank">
                 <div class="book-info">
@@ -170,7 +171,7 @@
             <img src="${ctxStatic}/lib/images/book.png" alt="图书图片" >
           </span>
                     <div class="book-about">
-                        <h3 class="book-name f-toe">h3. Bootstrap heading</h3>
+                        <h3 class="book-name f-toe">${bean.title}</h3>
                         <div class="book-author hidden-xs">
                             <p class="f-toe"><span>作者：</span>Chris Brown</p>
                             <p class="f-toe"><span>出版社：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
@@ -182,63 +183,8 @@
                 </div>
             </a>
         </div>
-        <div class="col-xs-3 col-sm-6">
-            <a href="javascript:void(0)" target="_blank">
-                <div class="book-info">
-          <span class="book-img">
-            <img src="${ctxStatic}/lib/images/book.png" alt="图书图片" >
-          </span>
-                    <div class="book-about">
-                        <h3 class="book-name f-toe">h3. Bootstrap heading</h3>
-                        <div class="book-author hidden-xs">
-                            <p class="f-toe"><span>作者：</span>Chris Brown</p>
-                            <p class="f-toe"><span>出版社：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                            <p class="f-toe"><span>出版年：</span>April 20,2018</p>
-                            <p class="f-toe"><span>馆藏地：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                            <p class="f-toe"><span>索书号：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xs-3 col-sm-6">
-            <a href="javascript:void(0)" target="_blank">
-                <div class="book-info">
-          <span class="book-img">
-            <img src="${ctxStatic}/lib/images/book.png" alt="图书图片" >
-          </span>
-                    <div class="book-about">
-                        <h3 class="book-name f-toe">h3. Bootstrap heading</h3>
-                        <div class="book-author hidden-xs">
-                            <p class="f-toe"><span>作者：</span>Chris Brown</p>
-                            <p class="f-toe"><span>出版社：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                            <p class="f-toe"><span>出版年：</span>April 20,2018</p>
-                            <p class="f-toe"><span>馆藏地：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                            <p class="f-toe"><span>索书号：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xs-3 col-sm-6">
-            <a href="javascript:void(0)" target="_blank">
-                <div class="book-info">
-          <span class="book-img">
-            <img src="${ctxStatic}/lib/images/book.png" alt="图书图片" >
-          </span>
-                    <div class="book-about">
-                        <h3 class="book-name f-toe">h3. Bootstrap heading</h3>
-                        <div class="book-author hidden-xs">
-                            <p class="f-toe"><span>作者：</span>Chris Brown</p>
-                            <p class="f-toe"><span>出版社：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                            <p class="f-toe"><span>出版年：</span>April 20,2018</p>
-                            <p class="f-toe"><span>馆藏地：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                            <p class="f-toe"><span>索书号：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+        </c:forEach>
+
     </div>
 </div>
 
