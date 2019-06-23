@@ -81,7 +81,7 @@
             <p class="title right-title">常用资源</p>
             <div class="link-msg">
                 <div class="msg-box">
-                    <a href=" " class="msg-link">
+                    <a href="${ctx}/list-892e39417c1e4101b32dc4109c0b6cde${urlSuffix}" class="msg-link">
                         数字资源
                     </a>
                     <a href=" " class="msg-link">
@@ -168,16 +168,16 @@
             <a href="javascript:void(0)" target="_blank">
                 <div class="book-info">
           <span class="book-img">
-            <img src="${ctxStatic}/lib/images/book.png" alt="图书图片" >
+            <img src="${bean.image}" alt="图书图片" >
           </span>
                     <div class="book-about">
                         <h3 class="book-name f-toe">${bean.title}</h3>
                         <div class="book-author hidden-xs">
-                            <p class="f-toe"><span>作者：</span>Chris Brown</p>
-                            <p class="f-toe"><span>出版社：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                            <p class="f-toe"><span>出版年：</span>April 20,2018</p>
-                            <p class="f-toe"><span>馆藏地：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
-                            <p class="f-toe"><span>索书号：</span>时代峰峻喝咖啡撒旦法量减少地方</p>
+                            <p class="f-toe"><span>作者：</span>${bean.author}</p>
+                            <p class="f-toe"><span>出版社：</span>${bean.puhlishHouse}</p>
+                            <p class="f-toe"><span>出版年：</span>${bean.publishYear}</p>
+                            <p class="f-toe"><span>馆藏地：</span>${bean.library}</p>
+                            <p class="f-toe"><span>索书号：</span>${bean.indexNo}</p>
                         </div>
                     </div>
                 </div>
