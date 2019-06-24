@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.mail.HtmlEmail;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import freemarker.template.Configuration;
@@ -86,80 +85,6 @@ public class SendMailUtil {
 		}
 	}
 
-	/**
-	 * 发送模板邮件
-	 * 
-	 * @param toMailAddr
-	 *            收信人地址
-	 * @param subject
-	 *            email主题
-	 * @param templatePath
-	 *            模板地址
-	 * @param map
-	 *            模板map
-	 */
-	public static void sendFtlMail(String toMailAddr, String subject,
-			String templatePath, Map<String, Object> map) {
-		Template template = null;
-		Configuration freeMarkerConfig = null;
-		HtmlEmail hemail = new HtmlEmail();
-		try {
-			hemail.setHostName(getHost(from));
-			hemail.setSmtpPort(getSmtpPort(from));
-			hemail.setCharset(charSet);
-			hemail.addTo(toMailAddr);
-			hemail.setFrom(from, fromName);
-			hemail.setAuthentication(username, password);
-			hemail.setSubject(subject);
-			freeMarkerConfig = new Configuration();
-			freeMarkerConfig.setDirectoryForTemplateLoading(new File(
-					getFilePath()));
-			// 获取模板
-			template = freeMarkerConfig.getTemplate(getFileName(templatePath),
-					new Locale("Zh_cn"), "UTF-8");
-			// 模板内容转换为string
-			String htmlText = FreeMarkerTemplateUtils
-					.processTemplateIntoString(template, map);
-			System.out.println(htmlText);
-			hemail.setMsg(htmlText);
-			hemail.send();
-			System.out.println("email send true!");
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("email send error!");
-		}
-	}
-
-	/**
-	 * 发送普通邮件
-	 * 
-	 * @param toMailAddr
-	 *            收信人地址
-	 * @param subject
-	 *            email主题
-	 * @param message
-	 *            发送email信息
-	 */
-	public static void sendCommonMail(String toMailAddr, String subject,
-			String message) {
-		HtmlEmail hemail = new HtmlEmail();
-		try {
-			hemail.setHostName(getHost(from));
-			hemail.setSmtpPort(getSmtpPort(from));
-			hemail.setCharset(charSet);
-			hemail.addTo(toMailAddr);
-			hemail.setFrom(from, fromName);
-			hemail.setAuthentication(username, password);
-			hemail.setSubject(subject);
-			hemail.setMsg(message);
-			hemail.send();
-			System.out.println("email send true!");
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("email send error!");
-		}
-
-	}
 
 	public static String getHtmlText(String templatePath,
 			Map<String, Object> map) {
@@ -259,34 +184,12 @@ public class SendMailUtil {
 		return realPath;
 	}
 
-	// private static File getFile(String path){
-	// File file =
-	// SendMail.class.getClassLoader().getResource("mailtemplate/test.ftl").getFile();
-	// return file;
-	// }
-	//
 
 	public static void main(String[] args) {
-		// HtmlEmail hemail = new HtmlEmail();
-		// try {
-		// hemail.setHostName("smtp.exmail.qq.com");
-		// hemail.setCharset("utf-8");
-		// hemail.addTo("fly.1206@qq.com");
-		// hemail.setFrom("zhoujunfeng@et-bank.com", "周俊峰");
-		// hemail.setAuthentication("zhoujunfeng@et-bank.com", "31415926@aa");
-		// hemail.setSubject("sendemail test!");
-		// hemail.setMsg("<a href=\"http://www.google.cn\">谷歌</a><br/>");
-		// hemail.send();
-		// System.out.println("email send true!");
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// System.out.println("email send error!");
-		// }
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("subject", "测试标题");
 		map.put("content", "测试 内容");
 		String templatePath = "mailtemplate/test.ftl";
-		sendFtlMail("test@163.com", "sendemail test!", templatePath, map);
 
 		// System.out.println(getFileName("mailtemplate/test.ftl"));
 	}
