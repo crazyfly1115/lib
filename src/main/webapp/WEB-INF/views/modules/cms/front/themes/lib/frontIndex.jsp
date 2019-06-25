@@ -18,8 +18,7 @@
     <title>铜梁图书馆</title>
 
     <link rel="stylesheet" href="${ctxStatic}/lib/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${ctxStatic}/lib/css/styles.css">
-
+    <link rel="stylesheet" href="${ctxStatic}/lib/css/styles.css"/>
 </head>
 <body>
 

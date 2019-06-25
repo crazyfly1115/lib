@@ -62,7 +62,7 @@ public class FrontController extends BaseController{
 	/**
 	 * 网站首页
 	 */
-	@RequestMapping
+	@RequestMapping(value="index${urlSuffix}")
 	public String index(Model model) {
 		Site site = CmsUtils.getSite(Site.defaultSiteId());
 		model.addAttribute("site", site);
