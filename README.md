@@ -1,4 +1,7 @@
-## 关注 JeeSite 4.0 请移步: <https://gitee.com/thinkgem/jeesite4>
+jeesite定制修改为专用网站模板，删除系统中原有的流程和办公
+
+
+
 
 # JeeSite 企业信息化快速开发平台
 
