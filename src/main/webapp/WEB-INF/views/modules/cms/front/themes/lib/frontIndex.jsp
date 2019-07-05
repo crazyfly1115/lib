@@ -61,18 +61,16 @@
                 </div>
                 <div class="middle-position service pointer">
                     <p class="title middle-title">服务指南</p>
-                    <a href="javascript:void(0)" class="link-msg">
-                        <p>
-                           读者须知
-                        </p>
+                    <div class="link-msg">
+                        <div class="msg-box">
+                            <c:forEach items="${fnc:getCategoryList(site.id, '86757a2685e54727811fdb02e37bc840', 5, '')}" var="art"  varStatus="status">
+                                <a href="${ctx}/list-${art.id}${urlSuffix}" class="msg-link">
+                                        ${art.name}
+                                </a>
+                            </c:forEach>
 
-                    </a>
-                    <a href="javascript:void(0)" class="link-msg">
-                        <p>
-                            读者须知
-                        </p>
-
-                    </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,12 +78,12 @@
             <p class="title right-title">常用资源</p>
             <div class="link-msg">
                 <div class="msg-box">
-                    <a href="${ctx}/list-892e39417c1e4101b32dc4109c0b6cde${urlSuffix}" class="msg-link">
-                        数字资源
-                    </a>
-                    <a href=" " class="msg-link">
-                         资源
-                    </a>
+                    <c:forEach items="${fnc:getCategoryList(site.id, '892e39417c1e4101b32dc4109c0b6cde', 5, '')}" var="art"  varStatus="status">
+                        <a href="${ctx}/list-${art.id}${urlSuffix}" class="msg-link">
+                                ${art.name}
+                        </a>
+                    </c:forEach>
+
                 </div>
             </div>
 
@@ -114,7 +112,7 @@
 
                 <div class="link-msg">
                     <div class="msg-box">
-                        <c:forEach items="${fnc:getArticleList(site.id, '8abcc372dbb54fc3a5087b2381608323', 5, '')}" var="art"  varStatus="status">
+                        <c:forEach items="${fnc:getArticleList(site.id, '86757a2685e54727811fdb02e37bc840', 5, '')}" var="art"  varStatus="status">
                             <a href="${art.id}" class="msg-link">
                                 ${art.title}
                             </a>

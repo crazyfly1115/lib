@@ -112,5 +112,8 @@ public class Link extends DataEntity<Link> {
 	public void setUser(User user) {
 		this.user = user;
 	}
+		public String getUrl() {
+        return this.href;
+   	}
 	
 }

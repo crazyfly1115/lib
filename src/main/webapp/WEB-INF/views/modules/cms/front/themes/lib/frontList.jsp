@@ -23,7 +23,6 @@
 <div class="columns list">
     <div class="header">
         <div class="header-link">
-            <a href="javascript:void(0)" target="_blank">入驻</a>
             <a href="javascript:void(0)" target="_blank">登录</a>
             <a href="javascript:void(0)" target="_blank">注册</a>
         </div>
@@ -33,16 +32,27 @@
             <div class="container">
                 <img class="logo" src="${ctxStatic}/lib/images/logo.png?v=ef0f2c0e-4c7a-48e0-b118-a13fb8bcab25" alt="logo">
                 <ul class="menu-nav">
-                    <li><a href="javascript:void (0)">首页</a></li>
-                    <li><a class="hover" href="javascript:void (0)">动态</a></li>
-                    <li><a href="javascript:void (0)">关于</a></li>
-                    <li><a href="javascript:void (0)">帮助</a></li>
+                    <!--hover 点击时候的状态-->
+
+                    <c:forEach items="${fnc:getCategoryList(site.id, '1', 10, '')}" var="art"  varStatus="status">
+                        <li class="nav-item "><a href="${ctx}/list-${art.id}${urlSuffix}"> ${art.name}</a>
+                            <ul class="child-node">
+                                <c:forEach items="${fnc:getCategoryList(site.id, art.id, 10, '')}" var="artson"  >
+                                <li class="node-item f-toe">
+                                    <a href="${ctx}/list-${artson.id}${urlSuffix}">${artson.name}</a>
+                                </li>
+                                </c:forEach>
+                            </ul>
+                        </li>
+                    </c:forEach>
+
                 </ul>
             </div>
         </div>
         <div class="container main">
             <div class="main-left">
                 <div class="main-left-title">${category.name} <span>NEW</span></div>
+
             </div>
             <div class="main-content">
                 <ul class="news-list">
@@ -60,41 +70,10 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="container">
-            <address class="address">
-                <h4 class="address-title">热线电话</h4>
-                <p class="address-phone"> 023-000000</p>
-                <span>微博：http://weibo.com/abcdefg</span>
-                <span>地址：这就是一个地址而已2栋2-2</span><br>
-                <span>微信：abcdefg </span>
-                <span>订阅号：bbcdefg </span>
-                <span>邮箱：abcdefg@abcd.com</span>
-            </address>
-            <div class="map">
-                <ul>
-                    <li>
-                        <a href="javascript:void (0)">网站首页</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void (0)">关于我们</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void (0)">友情链接</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void (0)">新闻中心</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void (0)">联系我们</a>
-                    </li>
-                </ul>
-            </div>
-            <p class="beian">
-                <a href="javascript:void(0)" target="_blank">网站备案号</a>
-            </p>
-        </div>
-    </div>
+    <%@include file="/WEB-INF/views/modules/cms/front/include/lib/foot.jsp"%>
 </div>
 </body>
+<script src="${ctxStatic}/lib/js/jquery.min.js?v=eee55e10-0693-4548-8635-8d0ef38ad595"></script>
+<script src="${ctxStatic}/lib/js/jquery.nicescroll.js?v=d7d0fd47-39f2-4c77-867b-2cc8df2620e7"></script>
+<script src="${ctxStatic}/lib/js/details.js?v=6ce14107-1655-4147-9e8b-0fc8a089c206"></script>
 </html>

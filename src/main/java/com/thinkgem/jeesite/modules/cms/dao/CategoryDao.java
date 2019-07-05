@@ -21,7 +21,7 @@ public interface CategoryDao extends TreeDao<Category> {
 	public List<Category> findModule(Category category);
 	
 //	public List<Category> findByParentIdsLike(Category category);
-//	{
+//	{c
 //		return find("from Category where parentIds like :p1", new Parameter(parentIds));
 //	}
 

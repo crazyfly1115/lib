@@ -189,7 +189,7 @@ public class FrontController extends BaseController{
 			else{
 				model.addAttribute("category", category);
 				model.addAttribute("categoryList", categoryList);
-				String view = "/frontListCategory";
+				String view = "/frontList";
 				if (StringUtils.isNotBlank(category.getCustomListView())){
 					view = "/"+category.getCustomListView();
 				}
