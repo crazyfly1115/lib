@@ -43,22 +43,25 @@
             <div class="left-search">
                 <input type="text" class="search-input" id="searchInput">
                 <div class="search-icon" id="searchBtn"></div>
+
             </div>
             <a href="javascript:void(0)" class="search-help">
-                检索项目文字说明
+                请输入需要检索的内容
             </a>
         </div>
         <div class="col-xs-2 col-sm-2">
             <div class="middle">
-                <div class="middle-position library pointer">
-                    <p class="title middle-title">本馆概况</p>
-                    <a href="javascript:void(0)" class="link-msg">
-                        <p>
-                            ${fnc:getCategory("e15701ef67c145d3b8a957713600a512").getDescription()}
-                        </p>
-                    </a>
+                <a href="${ctx}/view-e15701ef67c145d3b8a957713600a512-7de8a89a41894f93a7cb2f14846b2ec3.html">
+                    <div class="middle-position library pointer">
+                        <p class="title middle-title">本馆概况</p>
 
-                </div>
+                        <!--p>
+                            ${fnc:getCategory("e15701ef67c145d3b8a957713600a512").getDescription()}
+                        </p-->
+
+
+                    </div>
+                </a>
                 <div class="middle-position service pointer">
                     <p class="title middle-title">服务指南</p>
                     <div class="link-msg">
@@ -112,8 +115,8 @@
 
                 <div class="link-msg">
                     <div class="msg-box">
-                        <c:forEach items="${fnc:getArticleList(site.id, '86757a2685e54727811fdb02e37bc840', 5, '')}" var="art"  varStatus="status">
-                            <a href="${art.id}" class="msg-link">
+                        <c:forEach items="${fnc:getArticleList(site.id, '8abcc372dbb54fc3a5087b2381608323', 5, '')}" var="art"  varStatus="status">
+                            <a href="${art.url}" class="msg-link">
                                 ${art.title}
                             </a>
                         </c:forEach>
@@ -126,7 +129,7 @@
                 <div class="link-msg">
                    <div class="msg-box">
                     <c:forEach items="${fnc:getArticleList(site.id, 'de936c63975041ba843ee66468bebdec', 5, '')}" var="art"  varStatus="status">
-                        <a href="${art.id}" class="msg-link">
+                        <a href="${art.url}" class="msg-link">
                                 ${art.title}
                         </a>
                     </c:forEach>
@@ -139,7 +142,7 @@
 
         <ul class="consult">
             <li class="pointer">
-                <a href="javascript:void(0)">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=1483179421&site=qq&menu=yes">
                     <img src="${ctxStatic}/lib/images/qq.jpg" alt="QQ">
                 </a>
             </li>
@@ -187,6 +190,11 @@
 
 <script src="${ctxStatic}/lib/js/jquery.min.js"></script>
 <script src="${ctxStatic}/lib/js/unslider.min.js"></script>
-<script src="${ctxStatic}/lib/js/index.js"></script>
+<script src="${ctxStatic}/lib/js/index.js"> </script>
+<script>
+$('#searchBtn').click(function () {
+    location.href='http://www.duxiu.com/gosearch.jsp?channel=search&ecode=utf-8&sw='+$('#searchInput').val()+'&Field=all'
+});
+</script>
 </body>
 </html>
