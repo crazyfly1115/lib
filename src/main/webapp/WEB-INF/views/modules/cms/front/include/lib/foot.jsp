@@ -8,24 +8,15 @@
                 <li class="url-item">
                     友情链接：
                 </li>
-                <li class="url-item">
-                    <a href="#" target="_blank">123123</a>
-                </li>
-                <li class="url-item">
-                    <a href="#" target="_blank">123123</a>
-                </li>
-                <li class="url-item">
-                    <a href="#" target="_blank">123123</a>
-                </li>
-                <li class="url-item">
-                    <a href="#" target="_blank">123123</a>
-                </li>
-                <li class="url-item">
-                    <a href="#" target="_blank">123123</a>
-                </li>
+
+                <c:forEach items="${fnc:getLinkList(site.id, '5bfdfc7fd2fa49c992c0c457feac0ce3', 4, '')}" var="link"  varStatus="status">
+                    <li class="url-item">
+                        <a href="${link.href}" target="_blank">${link.title}</a>
+                    </li>
+                </c:forEach>
 
                 <li class="url-item">
-                    <a href="#" target="_blank">更多</a>
+                    <a href="${ctx}/list-5bfdfc7fd2fa49c992c0c457feac0ce3${urlSuffix}" target="_blank">更多</a>
                 </li>
             </ul>
         </div>

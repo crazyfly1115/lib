@@ -46,13 +46,13 @@
                         </a>
                     </li>
                     <li class="list-item">
-                        <a href="#" target="_blank">
+                        <a href="http://cqstlqtsg.lib.libsou.com/" target="_blank">
                             <img src="${ctxStatic}/lib/images/static/icon-3.png" class="icon-item">
                             <p>地方文献</p>
                         </a>
                     </li>
                     <li class="list-item">
-                        <a href="#" target="_blank">
+                        <a href="${ctx}/list-91f3737c575645c2ab7967accacd3e9e${urlSuffix}" target="_blank">
                             <img src="${ctxStatic}/lib/images/static/icon-4.png" class="icon-item">
                             <p>电子图书</p>
                         </a>
@@ -143,6 +143,7 @@
                                 ${art.title}
                             </a>
                         </c:forEach>
+                        <a href="${ctx}/list-8abcc372dbb54fc3a5087b2381608323${urlSuffix}" target="_blank" class="link-more">更多</a>
                     </div>
                 </div>
             </div>
@@ -158,7 +159,7 @@
                         </a>
 
                     </c:forEach>
-                       <a href="#" target="_blank" class="link-more">更多</a>
+                       <a href="${ctx}/list-de936c63975041ba843ee66468bebdec${urlSuffix}" target="_blank" class="link-more">更多</a>
                     </div>
                 </div>
             </div>
