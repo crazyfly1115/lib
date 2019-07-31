@@ -37,16 +37,39 @@
     </div>
     <div class="row">
         <div class="col-xs-7 col-sm-7 left">
-            <div class="left-icon" >
-                <img class="center-block" src="${ctxStatic}/lib/images/retrieval.png" alt="检索">
+            <div class="link-icon-list clearfix">
+                <ul>
+                    <li class="list-item">
+                        <a href="#" target="_blank">
+                            <img src="${ctxStatic}/lib/images/static/icon-1.png" class="icon-item">
+                            <p>藏管图书</p>
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" target="_blank">
+                            <img src="${ctxStatic}/lib/images/static/icon-3.png" class="icon-item">
+                            <p>地方文献</p>
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <a href="#" target="_blank">
+                            <img src="${ctxStatic}/lib/images/static/icon-4.png" class="icon-item">
+                            <p>电子图书</p>
+                        </a>
+                    </li>
+                    <li class="list-item">
+                        <img src="${ctxStatic}/lib/images/static/icon-2.png" class="icon-item">
+                        <p>项目可加</p>
+                    </li>
+                </ul>
             </div>
             <div class="left-search">
-                <input type="text" class="search-input" id="searchInput">
-                <div class="search-icon" id="searchBtn"></div>
-
+                <input type="text" class="search-input" value="请输入搜索关键字" onFocus="if(this.value==='请输入搜索关键字') this.value = ''"
+                       onBlur="if(this.value==='') this.value='请输入搜索关键字'">
+                <div class="search-icon" id="search"></div>
             </div>
             <a href="javascript:void(0)" class="search-help">
-                请输入需要检索的内容
+                检索项目文字说明
             </a>
         </div>
         <div class="col-xs-2 col-sm-2">
@@ -128,11 +151,14 @@
             <div class="icon">
                 <div class="link-msg">
                    <div class="msg-box">
+
                     <c:forEach items="${fnc:getArticleList(site.id, 'de936c63975041ba843ee66468bebdec', 5, '')}" var="art"  varStatus="status">
                         <a href="${art.url}" class="msg-link">
                                 ${art.title}
                         </a>
+
                     </c:forEach>
+                       <a href="#" target="_blank" class="link-more">更多</a>
                     </div>
                 </div>
             </div>
