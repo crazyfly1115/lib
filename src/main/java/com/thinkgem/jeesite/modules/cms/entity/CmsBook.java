@@ -4,15 +4,13 @@
 package com.thinkgem.jeesite.modules.cms.entity;
 
 import org.hibernate.validator.constraints.Length;
-import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import com.thinkgem.jeesite.common.persistence.DataEntity;
 
 /**
  * 新书推荐Entity
  * @author zhangsy
- * @version 2019-06-15
+ * @version 2019-08-18
  */
 public class CmsBook extends DataEntity<CmsBook> {
 	
@@ -26,10 +24,10 @@ public class CmsBook extends DataEntity<CmsBook> {
 	private String library;		// 馆藏地
 	private String indexNo;		// 索引号
 	private String keywords;		// 关键字
+	private String view;		// 是否显示
 	private String description;		// 描述、摘要
-	private String weight;		// 权重，越大越靠前
-	private Date weightDate;		// 权重期限
-	private Integer hits;		// 点击数
+	private String url;		// 跳转链接
+	private String hits;		// 点击数
 	private String customContentView;		// 自定义内容视图
 	private String viewConfig;		// 视图配置
 	
@@ -122,6 +120,15 @@ public class CmsBook extends DataEntity<CmsBook> {
 		this.keywords = keywords;
 	}
 	
+	@Length(min=0, max=10, message="是否显示长度必须介于 0 和 10 之间")
+	public String getView() {
+		return view;
+	}
+
+	public void setView(String view) {
+		this.view = view;
+	}
+	
 	@Length(min=0, max=255, message="描述、摘要长度必须介于 0 和 255 之间")
 	public String getDescription() {
 		return description;
@@ -131,29 +138,21 @@ public class CmsBook extends DataEntity<CmsBook> {
 		this.description = description;
 	}
 	
-	@Length(min=0, max=11, message="权重，越大越靠前长度必须介于 0 和 11 之间")
-	public String getWeight() {
-		return weight;
+	@Length(min=0, max=244, message="跳转链接长度必须介于 0 和 244 之间")
+	public String getUrl() {
+		return url;
 	}
 
-	public void setWeight(String weight) {
-		this.weight = weight;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	public Date getWeightDate() {
-		return weightDate;
-	}
-
-	public void setWeightDate(Date weightDate) {
-		this.weightDate = weightDate;
-	}
-	
-	public Integer getHits() {
+	@Length(min=0, max=11, message="点击数长度必须介于 0 和 11 之间")
+	public String getHits() {
 		return hits;
 	}
 
-	public void setHits(Integer hits) {
+	public void setHits(String hits) {
 		this.hits = hits;
 	}
 	

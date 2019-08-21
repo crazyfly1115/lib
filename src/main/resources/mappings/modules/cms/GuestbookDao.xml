@@ -37,7 +37,9 @@
 		FROM cms_guestbook a
 		<include refid="cmsGuestbookJoins"/>
 		<where>
-			a.del_flag = #{delFlag}
+			<if test="content != null and content != ''">
+			a.content = #{content}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">

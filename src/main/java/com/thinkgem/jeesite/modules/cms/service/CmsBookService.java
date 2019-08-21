@@ -16,7 +16,7 @@ import com.thinkgem.jeesite.modules.cms.dao.CmsBookDao;
 /**
  * 新书推荐Service
  * @author zhangsy
- * @version 2019-06-15
+ * @version 2019-08-18
  */
 @Service
 @Transactional(readOnly = true)

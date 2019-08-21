@@ -28,6 +28,9 @@
 			<li><label>标题：</label>
 				<form:input path="title" htmlEscape="false" maxlength="255" class="input-medium"/>
 			</li>
+			<li><label>是否显示：</label>
+				<form:radiobuttons path="view" items="${fns:getDictList('yes_no')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
 			<li class="clearfix"></li>
 		</ul>
@@ -40,6 +43,7 @@
 				<th>作者</th>
 				<th>出版社</th>
 				<th>出版时间</th>
+				<th>是否显示</th>
 				<shiro:hasPermission name="cms:cmsBook:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>
@@ -57,6 +61,9 @@
 				</td>
 				<td>
 					${cmsBook.publishYear}
+				</td>
+				<td>
+					${fns:getDictLabel(cmsBook.view, 'yes_no', '')}
 				</td>
 				<shiro:hasPermission name="cms:cmsBook:edit"><td>
     				<a href="${ctx}/cms/cmsBook/form?id=${cmsBook.id}">修改</a>

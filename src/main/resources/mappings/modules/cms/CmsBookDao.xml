@@ -13,7 +13,9 @@
 		a.library AS "library",
 		a.index_no AS "indexNo",
 		a.keywords AS "keywords",
+		a.view AS "view",
 		a.description AS "description",
+		a.url AS "url",
 		a.hits AS "hits",
 		a.custom_content_view AS "customContentView",
 		a.view_config AS "viewConfig",
@@ -48,6 +50,9 @@
 					<if test="dbName == 'oracle'">'%'||#{title}||'%'</if>
 					<if test="dbName == 'mssql'">'%'+#{title}+'%'</if>
 					<if test="dbName == 'mysql'">concat('%',#{title},'%')</if>
+			</if>
+			<if test="view != null and view != ''">
+				AND a.view = #{view}
 			</if>
 		</where>
 		<choose>
@@ -89,15 +94,13 @@
 			library,
 			index_no,
 			keywords,
+			view,
 			description,
-			hits,
-			custom_content_view,
-			view_config,
+			url,
 			create_by,
 			create_date,
 			update_by,
 			update_date,
-			remarks,
 			del_flag
 		) VALUES (
 			#{id},
@@ -109,15 +112,13 @@
 			#{library},
 			#{indexNo},
 			#{keywords},
+			#{view},
 			#{description},
-			#{hits},
-			#{customContentView},
-			#{viewConfig},
+			#{url},
 			#{createBy.id},
 			#{createDate},
 			#{updateBy.id},
 			#{updateDate},
-			#{remarks},
 			#{delFlag}
 		)
 	</insert>
@@ -132,13 +133,11 @@
 			library = #{library},
 			index_no = #{indexNo},
 			keywords = #{keywords},
+			view = #{view},
 			description = #{description},
-			hits = #{hits},
-			custom_content_view = #{customContentView},
-			view_config = #{viewConfig},
+			url = #{url},
 			update_by = #{updateBy.id},
-			update_date = #{updateDate},
-			remarks = #{remarks}
+			update_date = #{updateDate}
 		WHERE id = #{id}
 	</update>
 	

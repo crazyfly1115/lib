@@ -9,6 +9,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.thinkgem.jeesite.modules.cms.entity.*;
+import com.thinkgem.jeesite.modules.cms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,17 +26,6 @@ import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.servlet.ValidateCodeServlet;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
-import com.thinkgem.jeesite.modules.cms.entity.Article;
-import com.thinkgem.jeesite.modules.cms.entity.Category;
-import com.thinkgem.jeesite.modules.cms.entity.Comment;
-import com.thinkgem.jeesite.modules.cms.entity.Link;
-import com.thinkgem.jeesite.modules.cms.entity.Site;
-import com.thinkgem.jeesite.modules.cms.service.ArticleDataService;
-import com.thinkgem.jeesite.modules.cms.service.ArticleService;
-import com.thinkgem.jeesite.modules.cms.service.CategoryService;
-import com.thinkgem.jeesite.modules.cms.service.CommentService;
-import com.thinkgem.jeesite.modules.cms.service.LinkService;
-import com.thinkgem.jeesite.modules.cms.service.SiteService;
 import com.thinkgem.jeesite.modules.cms.utils.CmsUtils;
 
 /**
@@ -58,6 +49,10 @@ public class FrontController extends BaseController{
 	private CategoryService categoryService;
 	@Autowired
 	private SiteService siteService;
+	@Autowired
+	private CmsSwzlService cmsSwzlService;
+	@Autowired
+	private  CmsZyglService cmsZyglService;
 	
 	/**
 	 * 网站首页
@@ -339,5 +334,39 @@ public class FrontController extends BaseController{
             return article.getCustomContentView();
         }
     }
-	
+	@RequestMapping(value = "swzl", method=RequestMethod.GET)
+	public String guestbook(@RequestParam(required=false, defaultValue="1") Integer pageNo,
+							@RequestParam(required=false, defaultValue="30") Integer pageSize, Model model) {
+		Site site = CmsUtils.getSite(Site.defaultSiteId());
+		model.addAttribute("site", site);
+
+		Page<CmsSwzl> page = new Page<CmsSwzl>(pageNo, pageSize);
+		CmsSwzl cmsSwzl = new CmsSwzl();
+		cmsSwzl.setDelFlag(Guestbook.DEL_FLAG_NORMAL);
+		page = cmsSwzlService.findPage(page, cmsSwzl);
+		model.addAttribute("page", page);
+		return "modules/cms/front/themes/"+site.getTheme()+"/frontSwzl";
+	}
+	@RequestMapping(value = "zygl")
+	public String zygl(@RequestParam(required=false, defaultValue="1") Integer pageNo,
+							@RequestParam(required=false, defaultValue="30") Integer pageSize, Model model,CmsZygl cmsZygl,@RequestParam(required = true) String  categoryId) {
+		Site site = CmsUtils.getSite(Site.defaultSiteId());
+		model.addAttribute("site", site);
+
+		Category category = categoryService.get(categoryId);
+		if (category==null){
+			model.addAttribute("site", site);
+			return "error/404";
+		}
+		model.addAttribute("site", category.getSite());
+		model.addAttribute("category", category);
+
+		Page<CmsZygl> page = new Page<CmsZygl>(pageNo, pageSize);
+		cmsZygl.setDelFlag(CmsZygl.DEL_FLAG_NORMAL);
+		page = cmsZyglService.findPage(page, cmsZygl);
+		model.addAttribute("page", page);
+		model.addAttribute("type",cmsZygl.getType());
+		model.addAttribute("name",cmsZygl.getName());
+		return "modules/cms/front/themes/"+site.getTheme()+"/frontZygl";
+	}
 }

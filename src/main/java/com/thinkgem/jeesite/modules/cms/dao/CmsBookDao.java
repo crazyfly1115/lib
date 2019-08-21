@@ -10,7 +10,7 @@ import com.thinkgem.jeesite.modules.cms.entity.CmsBook;
 /**
  * 新书推荐DAO接口
  * @author zhangsy
- * @version 2019-06-15
+ * @version 2019-08-18
  */
 @MyBatisDao
 public interface CmsBookDao extends CrudDao<CmsBook> {

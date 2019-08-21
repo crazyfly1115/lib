@@ -53,17 +53,17 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">单位:</label>
+			<label class="control-label">标题:</label>
 			<div class="controls">
 				<c:out value="${guestbook.workunit}"/>
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label">留言分类:</label>
-			<div class="controls">
-				<span style="font-weight:bold;"><c:out value="${fns:getDictLabel(guestbook.type, 'cms_guestbook', '无')}"/></span>
-			</div>
-		</div>
+		<%--<div class="control-group">--%>
+			<%--<label class="control-label">留言分类:</label>--%>
+			<%--<div class="controls">--%>
+				<%--<span style="font-weight:bold;"><c:out value="${fns:getDictLabel(guestbook.type, 'cms_guestbook', '无')}"/></span>--%>
+			<%--</div>--%>
+		<%--</div>--%>
 		<div class="control-group">
 			<label class="control-label">IP:</label>
 			<div class="controls">

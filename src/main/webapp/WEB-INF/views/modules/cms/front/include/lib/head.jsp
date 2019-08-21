@@ -8,7 +8,15 @@
 
             <c:forEach items="${fnc:getCategoryList(site.id, '1', 10, '')}" var="art"  varStatus="status">
                 <c:if test="${art.module eq 'article'}">
-                    <li class="nav-item "><a href="${ctx}/list-${art.id}${urlSuffix}"> ${art.name}</a>
+                    <c:choose>
+                        <c:when test="${not empty art.href}">
+                            <li class="nav-item "><a href="${ctx}/${art.href}${urlSuffix}"> ${art.name}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="nav-item "><a href="${ctx}/list-${art.id}${urlSuffix}"> ${art.name}</a>
+                        </c:otherwise>
+                    </c:choose>
+
                 </c:if>
                 <c:if test="${art.module eq 'link'}">
                     <li class="nav-item "><a href="${ctx}/${art.href}"> ${art.name}</a>
@@ -16,7 +24,27 @@
                 <ul class="child-node">
                     <c:forEach items="${fnc:getCategoryList(site.id, art.id, 10, '')}" var="artson"  >
                         <li class="node-item f-toe">
-                            <a href="${ctx}/list-${artson.id}${urlSuffix}">${artson.name}</a>
+                        <c:if test="${artson.module eq 'article'}">
+                            <c:choose>
+                                <c:when test="${not empty artson.href}">
+                                    <a href="${ctx}/${artson.href}${urlSuffix}"> ${artson.name}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="${ctx}/list-${artson.id}${urlSuffix}">${artson.name}</a>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </c:if>
+                        <c:if test="${artson.module eq 'link'}">
+                            <c:choose>
+                                <c:when test="${fn:indexOf(artson.href, '?') eq -1 }">
+                                    <c:set var="url" value="${ctx}/${artson.href}?categoryId=${artson.id}"/></c:when>
+                                <c:otherwise>
+                                    <c:set var="url" value="${ctx}/${artson.href}&categoryId=${artson.id}"/></c:otherwise>
+                            </c:choose>
+                            <a href="${url}">${artson.name}</a>
+                        </c:if>
+
                         </li>
                     </c:forEach>
                 </ul>

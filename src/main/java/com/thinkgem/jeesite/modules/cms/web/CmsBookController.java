@@ -25,7 +25,7 @@ import com.thinkgem.jeesite.modules.cms.service.CmsBookService;
 /**
  * 新书推荐Controller
  * @author zhangsy
- * @version 2019-06-15
+ * @version 2019-08-18
  */
 @Controller
 @RequestMapping(value = "${adminPath}/cms/cmsBook")

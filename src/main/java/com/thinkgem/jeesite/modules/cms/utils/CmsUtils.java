@@ -310,6 +310,7 @@ public class CmsUtils {
 		Page<CmsBook> page = new Page<CmsBook>(1, num, -1);
 		CmsBook cmsBook=new CmsBook();
 		cmsBook.setDelFlag(Article.DEL_FLAG_NORMAL);
+		cmsBook.setView("1");
 		page = cmsBookService.findPage(page, cmsBook);
 		return page.getList();
 	}

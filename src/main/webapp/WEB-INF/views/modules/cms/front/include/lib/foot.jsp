@@ -24,7 +24,7 @@
     <div class="container">
         <address class="address">
             <h4 class="address-title">热线电话</h4>
-            <p class="address-phone"> 023-000000</p>
+            <p class="address-phone"> 64408639   64408621</p>
             <span class="stress">主办单位：铜梁县图书馆</span><br>
             <span>主办单位通讯详细地址：铜梁县巴川街道迎宾路154号</span>
             <span>主办单位证件住所：铜梁县巴川街道迎宾路154号</span>

@@ -42,7 +42,7 @@
                     <li class="list-item">
                         <a href="#" target="_blank">
                             <img src="${ctxStatic}/lib/images/static/icon-1.png" class="icon-item">
-                            <p>藏管图书</p>
+                            <p>馆藏图书</p>
                         </a>
                     </li>
                     <li class="list-item">
@@ -57,10 +57,10 @@
                             <p>电子图书</p>
                         </a>
                     </li>
-                    <li class="list-item">
-                        <img src="${ctxStatic}/lib/images/static/icon-2.png" class="icon-item">
-                        <p>项目可加</p>
-                    </li>
+                    <%--<li class="list-item">--%>
+                        <%--<img src="${ctxStatic}/lib/images/static/icon-2.png" class="icon-item">--%>
+                        <%--<p>项目可加</p>--%>
+                    <%--</li>li--%>
                 </ul>
             </div>
             <div class="left-search">
@@ -128,7 +128,7 @@
         <div class="col-xs-4 col-sm-4 left pointer">
             <img class="photo" src=" ${fnc:getCategory("ddc00e2cc30d4db8a40c6a76e5fec074").image}" alt="照片">
             <a href="javascript:void(0)" class="link-msg">
-                <p>
+                <p style="font-size:18px;">
                     ${fnc:getCategory("ddc00e2cc30d4db8a40c6a76e5fec074").getDescription()}
                 </p>
             </a>
@@ -192,7 +192,14 @@
         <p class="title"><span>新书推荐</span></p>
         <c:forEach items="${fnc:getCmsBookList(5, '')}" var="bean"  varStatus="status">
         <div class="col-xs-3 col-sm-6">
-            <a href="javascript:void(0)" target="_blank">
+
+            <c:choose>
+                <c:when test="${empty bean.url}">
+                    <c:set var="url" value="javascript:void(0)"/></c:when>
+                <c:otherwise>
+                    <c:set var="url" value="${bean.url}"/></c:otherwise>
+            </c:choose>
+            <a href="${url}" target="_blank">
                 <div class="book-info">
           <span class="book-img">
             <img src="${bean.image}" alt="图书图片" >

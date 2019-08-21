@@ -44,7 +44,7 @@
 			<label class="control-label">文章图片：</label>
 			<div class="controls">
 				<form:hidden id="image" path="image" htmlEscape="false" maxlength="255" class="input-xlarge"/>
-				<sys:ckfinder input="image" type="files" uploadPath="/cms/cmsBook" selectMultiple="false"/>
+				<sys:ckfinder input="image" type="files" uploadPath="/cms/cmsBook" selectMultiple="true"/>
 			</div>
 		</div>
 		<div class="control-group">
@@ -84,47 +84,21 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<label class="control-label">是否显示：</label>
+			<div class="controls">
+				<form:radiobuttons path="view" items="${fns:getDictList('yes_no')}" itemLabel="label" itemValue="value" htmlEscape="false" class=""/>
+			</div>
+		</div>
+		<div class="control-group">
 			<label class="control-label">描述、摘要：</label>
 			<div class="controls">
 				<form:input path="description" htmlEscape="false" maxlength="255" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">权重，越大越靠前：</label>
+			<label class="control-label">跳转链接：</label>
 			<div class="controls">
-				<form:input path="weight" htmlEscape="false" maxlength="11" class="input-xlarge "/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">权重期限：</label>
-			<div class="controls">
-				<input name="weightDate" type="text" readonly="readonly" maxlength="20" class="input-medium Wdate "
-					value="<fmt:formatDate value="${cmsBook.weightDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"
-					onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false});"/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">点击数：</label>
-			<div class="controls">
-				<form:input path="hits" htmlEscape="false" maxlength="11" class="input-xlarge "/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">自定义内容视图：</label>
-			<div class="controls">
-				<form:input path="customContentView" htmlEscape="false" maxlength="255" class="input-xlarge "/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">视图配置：</label>
-			<div class="controls">
-				<form:input path="viewConfig" htmlEscape="false" class="input-xlarge "/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">备注信息：</label>
-			<div class="controls">
-				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge "/>
+				<form:input path="url" htmlEscape="false" maxlength="244" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="form-actions">
